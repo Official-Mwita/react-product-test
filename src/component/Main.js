@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 function handleLogout() {
     // Remove the token from local storage
@@ -7,7 +8,7 @@ function handleLogout() {
     window.location="/login"
   }
 
-function ProductTable() {
+function ProductTable({setproductinfo}) {
   const [products, setProducts] = useState([]);
   const token = localStorage.getItem('token');
 
@@ -26,7 +27,8 @@ function ProductTable() {
   }, [token]);
 
   const update = product => {
-    console.log(product)
+    setproductinfo(product)
+    window.location="/addproduct"
   }
 
   return (
@@ -44,7 +46,7 @@ function ProductTable() {
       </thead>
       <tbody>
         {products.map(product => (
-          <tr key={product.productId} onClick={() => update(product)}>
+          <tr key={product.productId} onClick={() => update(product)} className='pr-table'>
             <td>{product.productId}</td>
             <td>{product.name}</td>
             <td>{product.category}</td>
@@ -55,6 +57,7 @@ function ProductTable() {
       </tbody>
     </table>
     <button onClick={handleLogout}>Logout</button>
+    <p><Link to='/addproduct'>Add product</Link></p>
     </div>
    
     

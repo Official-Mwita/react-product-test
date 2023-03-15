@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.pr-table:hover{
+  cursor: pointer;
+  background-color: rgb(215, 213, 213);
+
+  
+}
