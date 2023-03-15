@@ -8,7 +8,7 @@ import CreateProductPage from './component/Addproduct';
 import { useState } from 'react';
 
 function App() {
-  const[productinfo, setproductinfo] = useState({})
+  const[productinfo, setproductinfo] = useState(null)
 
   return (
     <Router>

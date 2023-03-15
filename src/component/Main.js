@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 function handleLogout() {
     // Remove the token from local storage
@@ -8,9 +8,17 @@ function handleLogout() {
     window.location="/login"
   }
 
+ 
 function ProductTable({setproductinfo}) {
   const [products, setProducts] = useState([]);
   const token = localStorage.getItem('token');
+  const location = useNavigate()
+
+
+  const handleCreate = () => {
+    setproductinfo(null)
+    location('/addproduct')
+  }
 
   useEffect(() => {
 
@@ -28,7 +36,7 @@ function ProductTable({setproductinfo}) {
 
   const update = product => {
     setproductinfo(product)
-    window.location="/addproduct"
+    location('/addproduct') 
   }
 
   return (
@@ -57,7 +65,7 @@ function ProductTable({setproductinfo}) {
       </tbody>
     </table>
     <button onClick={handleLogout}>Logout</button>
-    <p><Link to='/addproduct'>Add product</Link></p>
+    <button onClick={handleCreate}><Link>Add product</Link></button>
     </div>
    
     

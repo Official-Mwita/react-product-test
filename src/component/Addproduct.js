@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 
 
 function CreateProductPage({productinfo}) {
-    console.log(productinfo)
-  const [name, setName] = useState('');
-  const [category, setCategory] = useState('');
-  const [unitPrice, setUnitPrice] = useState(0.0);
-  const [availableQnty, setAvailableQnty] = useState(1);
-  const [color, setSetColor] = useState('');
+  const [name, setName] = useState(productinfo?.name);
+  const [category, setCategory] = useState(productinfo?.category);
+  const [unitPrice, setUnitPrice] = useState(productinfo?.unitPrice);
+  const [availableQnty, setAvailableQnty] = useState(productinfo?.availableQnty);
+  const [color, setSetColor] = useState(productinfo?.color);
 
   const [producterror, setProducterror] = useState(null);
 
@@ -92,7 +91,7 @@ function CreateProductPage({productinfo}) {
           <input type="number" value={availableQnty} onChange={event => setAvailableQnty(event.target.value)} />
         </label>
         <br />
-        <button type="submit">Create</button>
+        <button type="submit">{productinfo ? 'Edit':'Create'}</button>
         <button style={{marginLeft:5}}><Link to='/main'>Back</Link></button>
       </form>
     </div>
