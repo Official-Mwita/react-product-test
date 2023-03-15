@@ -15,7 +15,7 @@ function ProductTable() {
 
 
     // Make a GET request to the products endpoint
-   !token?window.location="/login" : fetch('http://192.168.1.14:5001/api/products', {
+   !token?window.location="/login" : fetch('http://192.168.1.13:5001/api/products', {
       headers: {
         Authorization: `Bearer ${token}`
       }

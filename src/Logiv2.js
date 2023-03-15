@@ -11,7 +11,7 @@ function Login() {
 
   const handleLogin = () => {
     // Make a POST request to the login endpoint with the email and password
-    fetch('http://192.168.1.14:5001/api/token', {
+    fetch('http://192.168.1.13:5001/api/token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
